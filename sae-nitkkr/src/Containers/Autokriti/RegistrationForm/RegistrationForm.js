@@ -48,17 +48,17 @@ function RegistrationForm() {
   }
 
   async function setInfo(contactUsData) {
-    // console.log("enter")
+   
     document.getElementById("reg_button").disabled = true;
     document.getElementById("reg_button").style.backgroundColor = "gray";
     timestamp = String(new Date().getTime());
 
-    //db
+    
     await setDoc(doc(db, "registration", timestamp), contactUsData);
 
     deletedata();
 
-    // window.location.reload();
+    
     sendEmail(contactUsData);
     alert("Congratulations! Your information has been saved successfully.");
     document.getElementById("reg_button").disabled = false;
@@ -79,8 +79,8 @@ function RegistrationForm() {
   }
 
   const sendEmail = (data) => {
-    //console.log("enter")
-    init("user_qet4RKd7C7UreliHN5dhq"); //user id
+   
+    init("user_qet4RKd7C7UreliHN5dhq"); 
     const toSend = {
       name: data.Name,
       sem: data.Semester,
@@ -89,11 +89,10 @@ function RegistrationForm() {
       referenceId: timestamp,
       pno: data.Phone,
     };
-    // console.log(toSend)
-    //(serviceid,templateid,sendingdata)
+  
     send("service_r8xht0n", "template_eqh6a2c", toSend).then(
       (result) => {
-        //console.log('exit')
+       
         console.log(result.text);
       },
       (error) => {
@@ -101,7 +100,7 @@ function RegistrationForm() {
       }
     );
   };
-  // referenceId
+ 
   return (
     <div className="reg-center">
       <div className="reg-heading">
